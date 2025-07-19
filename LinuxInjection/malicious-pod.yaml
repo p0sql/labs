@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: host-pid
+spec:
+  hostPID: true
+  containers:
+  - name: pid
+    image: ubuntu:22.04
+    securityContext:
+      capabilities:
+        add: ["SYS_PTRACE"]
+      #privileged: true
+    command: ["sleep", "infinity"] 
